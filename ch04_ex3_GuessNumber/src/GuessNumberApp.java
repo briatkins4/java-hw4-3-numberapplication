@@ -1,8 +1,10 @@
 import java.util.Scanner;
 
-public class GuessNumberApp {
+public class GuessNumberApp 
+{
     
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         final int LIMIT = 10;
 
         System.out.println("Guess the number!");
@@ -14,27 +16,34 @@ public class GuessNumberApp {
         int number = (int) d;             // convert double to int
         number++;                         // int is >= 1 and <= limit
 
-        Scanner sc = new Scanner(System.in);            
+        Scanner sc = new Scanner(System.in);  
+        int guess = 0;      
         int count = 1;
-        while (true) {
+        while (guess != number) 
+        {
             System.out.print("Your guess: ");
-            int guess = Integer.parseInt(sc.nextLine());
+            guess = Integer.parseInt(sc.nextLine());
             
-            if (guess < 1 || guess > LIMIT) {
-                System.out.println("Invalid guess. Try again.");
-                continue;
+            if (guess < 1 || guess > LIMIT) 
+            {
+                System.out.println("Invalid guess. Try again."); 
             }
+                else if(guess < number)
+                {
+                    System.out.println("Too low.");
+                    count++;
+                }
+                else 
+                {
+                    System.out.println("Too high.");
+                    count++;
+                }
             
-            if (guess < number) {
-                System.out.println("Too low.");
-            } else if (guess > number) {
-                System.out.println("Too high.");
-            } else {
-                System.out.println("You guessed it in " + count + " tries.\n");
-                break;
-            }            
-            count++;
+            
         }
-        System.out.println("Bye!");
-    }   
+            System.out.println("You guessed it in " + count + " tries.\n");
+            System.out.println("Bye!");
+
+    sc.close();
+    }
 }
